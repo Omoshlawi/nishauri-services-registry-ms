@@ -1,6 +1,7 @@
-import path from "path";
-export { formartError } from "./helpers";
-export const BASE_DIR = process.cwd();
-export const MEDIA_ROOT = path.join(BASE_DIR, "media");
-export const MEDIA_URL = "media";
-export const PROFILE_URL = "uploads";
+import config from "config";
+
+export const configuration = {
+  version: require("./../../package.json").version,
+  name: require("./../../package.json").name,
+  nameAliase: config.get("name"),
+};

@@ -4,6 +4,8 @@ import express from "express";
 import cors from "cors";
 import { handleErrors } from "./middlewares";
 import morgan from "morgan";
+import router from "./features/registry/route";
+import { configuration } from "./utils";
 
 const app = express();
 // --------------------middlewares---------------------------
@@ -16,7 +18,8 @@ app.use(cors());
 // ------------------End middlewares------------------------
 
 //------------------- routes --------------------------------
-//   app.use("/auth", asy);
+
+app.use("/", router);
 //-------------------end routes-----------------------------
 
 //---------------- error handler -----------------------
@@ -25,5 +28,7 @@ app.use(handleErrors);
 
 const port = config.get("port");
 app.listen(port, () => {
-  console.log(`[+]${config.get("name")} listening on port ${port}...`);
+  console.log(
+    `[+]${configuration.name}:${configuration.version} listening on port ${port}...`
+  );
 });
