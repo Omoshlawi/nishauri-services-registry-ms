@@ -36,7 +36,7 @@ class Registry {
       console.log(
         `[+]Added service ${service.name} ${service.version} at ${service.host}:${service.port}`
       );
-      console.log(this.services);
+      // console.log(this.services);
 
       return service;
     }
@@ -49,13 +49,13 @@ class Registry {
     console.log(
       `[+]Udated service ${service.name} ${service.version} at ${service.host}:${service.port}`
     );
-    console.log(this.services);
+    // console.log(this.services);
     return service;
   }
 
   unregister(service: Service) {
     const serviece = this.services.splice(this.serviceIndex(service), 1)[0];
-    console.log(this.services);
+    // console.log(this.services);
 
     return service;
   }

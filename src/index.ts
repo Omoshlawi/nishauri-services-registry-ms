@@ -1,5 +1,4 @@
 import "dotenv/config";
-import config from "config";
 import express from "express";
 import cors from "cors";
 import { handleErrors } from "./middlewares";
@@ -12,7 +11,9 @@ const app = express();
 
 if (app.get("env") === "development") {
   app.use(morgan("tiny"));
-  console.log(`[+]Morgan logger Enabled for ${config.get("name")}`);
+  console.info(
+    `[+]${configuration.name}:${configuration.version} enable morgan`
+  );
 }
 app.use(cors());
 // ------------------End middlewares------------------------
@@ -26,7 +27,7 @@ app.use("/", router);
 app.use(handleErrors);
 //---------------- end error handler -----------------------
 
-const port = config.get("port");
+const port = configuration.port ?? 0;
 app.listen(port, () => {
   console.log(
     `[+]${configuration.name}:${configuration.version} listening on port ${port}...`
